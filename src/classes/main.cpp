@@ -22,14 +22,17 @@ using namespace std;
 /** Cette fonction retourne si une touche est appuyé par l'utilisateur
 *   https://github.com/ajpaulson/learning-ncurses/blob/master/kbhit.c
 */
+
 int kbhit(void);
 
 int main()
 {
-    int directionEnCours=TOUCHE_KEY_DOWN;
+    //int directionEnCours=TOUCHE_KEY_DOWN;
+    int directionEnCours=TOUCHE_KEY_UP;
 
     // pointeurs sur l'unique instance de la classe fenetre
     Board *fenetre;
+    
     // initialisation des pointeurs
     fenetre = Board::getInstance ();
 
@@ -38,8 +41,8 @@ int main()
     keypad (stdscr,true);
     noecho();
 
-    bool collision = FALSE;
-    while (!collision)
+    while(!(serpent.checkColisionWithBoard() or serpent.checkColisionWithSnake()))
+
     {
         if(kbhit())
         {
@@ -62,7 +65,7 @@ int main()
 
         }
         serpent.move(directionEnCours);
-        collision = serpent.checkColisionWithBoard();
+       // collision = serpent.checkColisionWithBoard();
         serpent.affichSerpent();
         usleep (150000);
 

@@ -72,4 +72,7 @@ private:
     int m_y; //!< Member variable "m_y"
 };
 
+
+bool operator==(Point const& a, Point const& b); //Implémentation des opérateurs
+
 #endif // POINT_H

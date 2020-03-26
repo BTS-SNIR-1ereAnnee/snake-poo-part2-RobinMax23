@@ -49,7 +49,7 @@ void snake::move(int direction)
 
     else if(direction == 2)
     {
-        serpent[0].moveDown();
+        serpent[0].moveDown();  	
     }
     else if(direction == 3)
     {
@@ -71,3 +71,14 @@ bool snake::checkColisionWithBoard()
     return FALSE;
 }
 
+bool snake::checkColisionWithSnake()
+{
+    for(int d = 1; d < longeur; d++)
+    {
+        if(serpent[d].getY()==serpent[0].getY() and serpent[d].getX()==serpent[0].getX())
+        {
+            return true;
+        }
+    }
+        return false;
+}
